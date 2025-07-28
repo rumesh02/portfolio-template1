@@ -32,20 +32,26 @@ export default function About() {
 
   return (
     <section id="about" className="min-h-screen py-24 relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-blue-50/30 to-indigo-50/30 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"></div>
+      {/* Enhanced Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900/50 via-blue-900/30 to-indigo-900/50"></div>
+      
+      {/* Floating background elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-20 right-20 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-700"></div>
+        <div className="absolute bottom-20 left-20 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      </div>
       
       <div ref={ref} className="relative z-10 max-w-7xl mx-auto px-4">
         <div className={`transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
           {/* Section Header */}
           <div className="text-center mb-16">
-            <span className="text-blue-600 dark:text-blue-400 font-semibold text-lg tracking-wide uppercase">
+            <span className="text-blue-400 font-semibold text-lg tracking-wide uppercase">
               Get to know me
             </span>
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mt-4 mb-6">
+            <h2 className="text-4xl lg:text-5xl font-bold text-white mt-4 mb-6">
               About Me
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto rounded-full"></div>
+            <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-cyan-400 mx-auto rounded-full"></div>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-16 items-center">

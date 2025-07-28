@@ -1,22 +1,42 @@
 import { useState, useEffect } from 'react';
+import { useTheme } from '../contexts/ThemeContext';
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const { isDarkMode } = useTheme();
 
   useEffect(() => {
     setIsLoaded(true);
+    
+    // Mouse movement effect
+    const handleMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 lg:pt-0">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-slate-50 dark:from-gray-900 dark:via-blue-900 dark:to-slate-900"></div>
+      {/* Interactive background elements that follow mouse */}
+      <div 
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(59, 130, 246, 0.1) 0%, transparent 70%)`
+        }}
+      ></div>
       
-      {/* Animated background elements */}
+      {/* Enhanced animated background elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-blue-300/20 dark:bg-blue-500/10 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-72 h-72 bg-indigo-300/20 dark:bg-indigo-500/10 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-1000"></div>
-        <div className="absolute -bottom-32 left-40 w-72 h-72 bg-cyan-300/20 dark:bg-cyan-500/10 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-500"></div>
+        <div className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-r from-blue-500/20 via-indigo-500/30 to-purple-600/20 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
+        <div className="absolute top-40 right-20 w-72 h-72 bg-gradient-to-r from-cyan-400/25 via-blue-500/35 to-indigo-600/25 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-1000"></div>
+        <div className="absolute -bottom-32 left-40 w-72 h-72 bg-gradient-to-r from-purple-500/20 via-pink-500/30 to-blue-600/20 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-500"></div>
+        
+        {/* Additional glowing orbs */}
+        <div className="absolute top-1/3 left-1/4 w-48 h-48 bg-gradient-to-r from-blue-400/15 to-cyan-400/15 rounded-full animate-pulse delay-2000 blur-2xl"></div>
+        <div className="absolute bottom-1/3 right-1/4 w-56 h-56 bg-gradient-to-r from-indigo-400/20 to-purple-400/20 rounded-full animate-pulse delay-3000 blur-2xl"></div>
       </div>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4">
@@ -25,51 +45,70 @@ export default function Home() {
           <div className={`space-y-6 lg:space-y-8 transform transition-all duration-1000 ${isLoaded ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'}`}>
             <div className="space-y-3 lg:space-y-4">
               <div className="inline-block">
-                <span className="text-base lg:text-lg font-medium text-gray-600 dark:text-gray-400 tracking-wide">
+                <span className={`text-base lg:text-lg font-medium tracking-wide ${
+                  isDarkMode ? 'text-gray-300' : 'text-gray-600'
+                }`}>
                   Hi! I am,
                 </span>
               </div>
               
               <div className="space-y-5">
-                <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-gray-900 dark:text-white leading-tight">
-                  <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-slate-600 bg-clip-text text-transparent">
+                <h1 className={`text-4xl md:text-5xl lg:text-7xl font-bold leading-tight ${
+                  isDarkMode ? 'text-white' : 'text-gray-900'
+                }`}>
+                  <span className={`bg-gradient-to-r ${
+                    isDarkMode 
+                      ? 'from-blue-400 via-cyan-300 to-indigo-400' 
+                      : 'from-blue-600 via-indigo-600 to-purple-600'
+                  } bg-clip-text text-transparent animate-pulse`}>
                     Rumesh Thisaranga
                   </span>
                 </h1>
                 
-                <p className="text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 font-light mt-4">
-                  Full-Stack Developer & UI Designer
+                <p className={`text-lg md:text-xl lg:text-2xl font-light mt-4 ${
+                  isDarkMode ? 'text-gray-300' : 'text-gray-700'
+                }`}>
+                  <span className={`bg-gradient-to-r ${
+                    isDarkMode 
+                      ? 'from-blue-300 to-cyan-300' 
+                      : 'from-blue-600 to-indigo-600'
+                  } bg-clip-text text-transparent`}>
+                    Full-Stack Developer & UI Designer
+                  </span>
                 </p>
               </div>
               
-              <p className="text-base lg:text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-lg">
+              <p className={`text-base lg:text-lg leading-relaxed max-w-lg ${
+                isDarkMode ? 'text-gray-400' : 'text-gray-600'
+              }`}>
                 With a focus on usability and performance, I design and build digital solutions that merge software engineering with thoughtful design.
               </p>
             </div>
 
-            {/* CTA Buttons */}
+            {/* CTA Buttons with enhanced styling */}
             <div className="flex flex-wrap gap-4">
               <a 
                 href="#projects"
-                className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg font-medium hover:from-blue-700 hover:to-indigo-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg font-medium hover:from-blue-700 hover:to-indigo-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-blue-500/25 relative overflow-hidden"
               >
-                View My Work
-                <span className="inline-block ml-2 transform group-hover:translate-x-1 transition-transform duration-300">→</span>
+                <span className="relative z-10">View My Work</span>
+                <span className="inline-block ml-2 transform group-hover:translate-x-1 transition-transform duration-300 relative z-10">→</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </a>
               <a 
                 href="#contact"
-                className="px-8 py-4 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg font-medium hover:border-blue-500 dark:hover:border-blue-400 hover:text-blue-600 dark:hover:text-blue-400 transform hover:scale-105 transition-all duration-300"
+                className="px-8 py-4 border-2 border-blue-400/50 text-blue-300 rounded-lg font-medium hover:border-blue-400 hover:text-blue-200 hover:bg-blue-500/10 transform hover:scale-105 transition-all duration-300 backdrop-blur-sm"
               >
                 Get In Touch
               </a>
             </div>
 
-            {/* Social Links */}
+            {/* Social Links with enhanced styling */}
             <div className="flex gap-6 pt-4">
               <a 
                 href="https://github.com/rumesh02" 
                 target='_blank'
-                className="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 transform hover:scale-110 transition-all duration-300"
+                className="w-12 h-12 bg-gray-800/50 backdrop-blur-sm rounded-full flex items-center justify-center text-gray-300 hover:text-blue-400 hover:bg-blue-500/20 transform hover:scale-110 transition-all duration-300 border border-gray-700/50 hover:border-blue-500/50"
                 aria-label="GitHub"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -79,7 +118,7 @@ export default function Home() {
               <a 
                 href="https://www.linkedin.com/in/rumeshthisaranga" 
                 target='_blank'
-                className="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 transform hover:scale-110 transition-all duration-300"
+                className="w-12 h-12 bg-gray-800/50 backdrop-blur-sm rounded-full flex items-center justify-center text-gray-300 hover:text-blue-400 hover:bg-blue-500/20 transform hover:scale-110 transition-all duration-300 border border-gray-700/50 hover:border-blue-500/50"
                 aria-label="LinkedIn"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -90,22 +129,22 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Right side - Photo with diagonal design */}
+          {/* Right side - Photo with enhanced styling */}
           <div className={`relative transform transition-all duration-1000 delay-300 ${isLoaded ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'} order-first lg:order-last`}>
             <div className="relative flex justify-center">
-              {/* Diagonal background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-indigo-600 to-slate-600 rounded-3xl transform rotate-3 scale-105"></div>
-              <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500 via-blue-500 to-indigo-500 rounded-3xl transform -rotate-6 scale-95 opacity-70"></div>
+              {/* Enhanced diagonal background with glow */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 rounded-3xl transform rotate-3 scale-105 blur-sm opacity-60"></div>
+              <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500 via-blue-500 to-indigo-500 rounded-3xl transform -rotate-6 scale-95 opacity-40 blur-sm"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-indigo-600 rounded-3xl transform rotate-1 scale-100 opacity-30 animate-pulse"></div>
               
-              {/* Photo container */}
-              <div className="relative bg-white dark:bg-gray-800 rounded-3xl p-4 lg:p-6 shadow-2xl transform hover:scale-105 transition-transform duration-500 w-64 h-64 md:w-80 md:h-80">
-                <div className="w-full h-full bg-gray-200 dark:bg-gray-700 rounded-2xl flex items-center justify-center overflow-hidden">
-                  {/* Placeholder for photo - you'll replace this with your actual photo */}
+              {/* Photo container with enhanced styling */}
+              <div className="relative bg-gray-800/80 backdrop-blur-sm rounded-3xl p-4 lg:p-6 shadow-2xl transform hover:scale-105 transition-transform duration-500 w-64 h-64 md:w-80 md:h-80 border border-gray-700/50">
+                <div className="w-full h-full bg-gray-700/50 rounded-2xl flex items-center justify-center overflow-hidden">
                   <div className="text-center p-4">
                     <img 
                       src="/images/rumesh.jpg"
-                      alt="Your Name"
-                      className="w-full h-full object-cover"
+                      alt="Rumesh Thisaranga"
+                      className="w-full h-full object-cover rounded-2xl"
                     />
                   </div>
                 </div>
@@ -115,10 +154,10 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Enhanced scroll indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-gray-400 dark:border-gray-600 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-gray-400 dark:bg-gray-600 rounded-full mt-2 animate-pulse"></div>
+        <div className="w-6 h-10 border-2 border-blue-400/60 rounded-full flex justify-center backdrop-blur-sm">
+          <div className="w-1 h-3 bg-blue-400 rounded-full mt-2 animate-pulse"></div>
         </div>
       </div>
     </section>

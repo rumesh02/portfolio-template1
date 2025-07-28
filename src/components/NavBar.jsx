@@ -44,7 +44,9 @@ export default function NavBar() {
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
       scrolled 
-        ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm shadow-lg border-b border-gray-200/20 dark:border-gray-700/20' 
+        ? isDarkMode 
+          ? 'bg-gray-900/80 backdrop-blur-md shadow-xl border-b border-blue-500/20' 
+          : 'bg-white/80 backdrop-blur-md shadow-xl border-b border-blue-300/20'
         : 'bg-transparent'
     }`}>
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-4 py-4">
@@ -59,7 +61,11 @@ export default function NavBar() {
             </div>
             <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl blur opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
           </div>
-          <span className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+          <span className={`text-xl font-bold transition-colors duration-300 ${
+            isDarkMode 
+              ? 'text-white group-hover:text-blue-400' 
+              : 'text-gray-900 group-hover:text-blue-600'
+          }`}>
             Rumesh
           </span>
         </a>
@@ -71,7 +77,11 @@ export default function NavBar() {
               <a
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="px-4 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-lg hover:bg-gray-100/50 dark:hover:bg-gray-800/50 transition-all duration-300 font-medium"
+                className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                  isDarkMode 
+                    ? 'text-gray-300 hover:text-blue-400 hover:bg-gray-800/50' 
+                    : 'text-gray-700 hover:text-blue-600 hover:bg-gray-100/50'
+                }`}
               >
                 {link.label}
               </a>
@@ -83,7 +93,11 @@ export default function NavBar() {
           {/* Dark Mode Toggle */}
           <button
             onClick={toggleTheme}
-            className="p-3 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 group"
+            className={`p-3 rounded-xl transition-all duration-300 group ${
+              isDarkMode 
+                ? 'bg-gray-800 hover:bg-gray-700' 
+                : 'bg-gray-100 hover:bg-gray-200'
+            }`}
             aria-label="Toggle dark mode"
           >
             <div className="relative w-5 h-5">
@@ -92,7 +106,9 @@ export default function NavBar() {
                   <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z" />
                 </svg>
               ) : (
-                <svg className="w-5 h-5 text-gray-700 dark:text-gray-300 transform group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24">
+                <svg className={`w-5 h-5 transform group-hover:scale-110 transition-transform duration-300 ${
+                  isDarkMode ? 'text-gray-300' : 'text-gray-700'
+                }`} fill="currentColor" viewBox="0 0 24 24">
                   <path d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" />
                 </svg>
               )}
@@ -110,12 +126,18 @@ export default function NavBar() {
 
           {/* Mobile button */}
           <button
-            className="md:hidden p-2 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300"
+            className={`md:hidden p-2 rounded-xl transition-all duration-300 ${
+              isDarkMode 
+                ? 'bg-gray-800 hover:bg-gray-700' 
+                : 'bg-gray-100 hover:bg-gray-200'
+            }`}
             onClick={() => setOpen((o) => !o)}
             aria-label="Toggle menu"
           >
             <svg
-              className="w-6 h-6 text-gray-900 dark:text-white transition-transform duration-300"
+              className={`w-6 h-6 transition-transform duration-300 ${
+                isDarkMode ? 'text-white' : 'text-gray-900'
+              }`}
               fill="none"
               stroke="currentColor"
               strokeWidth={2}
@@ -141,14 +163,22 @@ export default function NavBar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-t border-gray-200/20 dark:border-gray-700/20">
+        <div className={`md:hidden backdrop-blur-md border-t border-gray-200/20 transition-all duration-300 ${
+          isDarkMode 
+            ? 'bg-gray-900/95 border-gray-700/20' 
+            : 'bg-white/95 border-gray-200/20'
+        }`}>
           <ul className="px-4 py-6 space-y-2">
             {LINKS.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 rounded-lg transition-all duration-300 font-medium"
+                  className={`block px-4 py-3 rounded-lg transition-all duration-300 font-medium ${
+                    isDarkMode 
+                      ? 'text-gray-300 hover:text-blue-400 hover:bg-gray-800/50' 
+                      : 'text-gray-700 hover:text-blue-600 hover:bg-gray-100/50'
+                  }`}
                 >
                   {link.label}
                 </a>

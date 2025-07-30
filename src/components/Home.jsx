@@ -28,15 +28,11 @@ export default function Home() {
         }}
       ></div>
       
-      {/* Enhanced animated background elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-r from-blue-500/20 via-indigo-500/30 to-purple-600/20 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-72 h-72 bg-gradient-to-r from-cyan-400/25 via-blue-500/35 to-indigo-600/25 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-1000"></div>
-        <div className="absolute -bottom-32 left-40 w-72 h-72 bg-gradient-to-r from-purple-500/20 via-pink-500/30 to-blue-600/20 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-500"></div>
-        
-        {/* Additional glowing orbs */}
-        <div className="absolute top-1/3 left-1/4 w-48 h-48 bg-gradient-to-r from-blue-400/15 to-cyan-400/15 rounded-full animate-pulse delay-2000 blur-2xl"></div>
-        <div className="absolute bottom-1/3 right-1/4 w-56 h-56 bg-gradient-to-r from-indigo-400/20 to-purple-400/20 rounded-full animate-pulse delay-3000 blur-2xl"></div>
+      {/* Enhanced animated background elements - simplified */}
+      <div className="absolute inset-0 opacity-60">
+        <div className="absolute top-20 left-20 w-48 h-48 bg-gradient-to-r from-blue-500/10 via-indigo-500/15 to-purple-600/10 rounded-full mix-blend-multiply filter blur-xl"></div>
+        <div className="absolute top-40 right-20 w-48 h-48 bg-gradient-to-r from-cyan-400/15 via-blue-500/20 to-indigo-600/15 rounded-full mix-blend-multiply filter blur-xl"></div>
+        <div className="absolute -bottom-32 left-40 w-48 h-48 bg-gradient-to-r from-purple-500/10 via-pink-500/15 to-blue-600/10 rounded-full mix-blend-multiply filter blur-xl"></div>
       </div>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4">

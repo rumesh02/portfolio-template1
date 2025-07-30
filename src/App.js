@@ -3,6 +3,7 @@ import Home from "./components/Home";
 import About from "./components/About";
 import Education from "./components/Education";
 import Projects from "./components/Projects";
+import ArchitecturalProjects from "./components/ArchitecturalProjects";
 import Contact from "./components/Contact";
 import AnimatedBackground from "./components/AnimatedBackground";
 import FloatingElements from "./components/FloatingElements";
@@ -20,12 +21,11 @@ function AppContent() {
         ? 'bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white' 
         : 'bg-gradient-to-br from-blue-100 via-white to-indigo-100 text-gray-900'
     }`}>
-      {/* Animated Background Layers - adjust opacity based on theme */}
-      <div className={isDarkMode ? 'opacity-100' : 'opacity-40'}>
+      {/* Animated Background Layers - reduced for performance */}
+      <div className={isDarkMode ? 'opacity-60' : 'opacity-30'}>
         <AnimatedBackground />
         <FloatingElements />
-        <ParticleEffects />
-        <Enhanced3DEffects />
+        {/* Removed ParticleEffects and Enhanced3DEffects for better performance */}
       </div>
       <MouseTrail />
       
@@ -38,6 +38,7 @@ function AppContent() {
           <About />
           <Education />
           <Projects />
+          <ArchitecturalProjects />
           <Contact />
         </main>
       </div>

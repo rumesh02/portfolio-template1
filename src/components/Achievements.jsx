@@ -5,53 +5,53 @@ import { useTheme } from '../contexts/ThemeContext';
 const ACHIEVEMENTS = [
   {
     id: 1,
-    title: "Best Student Award 2023",
-    organization: "University of Moratuwa",
-    year: "2023",
-    type: "Academic",
-    description: "Recognized as the top performing student in the Faculty of Architecture with outstanding academic excellence and innovative design solutions.",
-    image: "/images/achievement1.jpg",
-    details: ["GPA: 3.85/4.00", "Dean's List", "Research Excellence", "Design Innovation Award"]
+    title: "2nd Runner-up - J'apura X-Treme Hackathon",
+    organization: "IEEE Computer Society, University of Jayawardenapura",
+    year: "2024",
+    type: "Hackathon",
+    description: "Secured 2nd runner-up position in the prestigious J'apura X-Treme Hackathon, demonstrating exceptional problem-solving skills and innovative thinking in a competitive environment.",
+    image: "/images/japura.jpg",
+    details: ["2nd Runner-up Position", "IEEE Competition", "Problem Solving", "Team Collaboration"]
   },
   {
     id: 2,
-    title: "Sustainable Design Competition Winner",
-    organization: "Green Building Council",
+    title: "6th Place - CODE RUSH",
+    organization: "INTECS, Faculty of IT, University of Moratuwa",
     year: "2024", 
-    type: "Competition",
-    description: "First place winner in the national sustainable architecture design competition for eco-friendly residential development concept.",
-    image: "/images/achievement2.jpg",
-    details: ["1st Place Winner", "Eco-friendly Design", "Innovation Award", "Sustainability Focus"]
+    type: "Programming",
+    description: "Achieved 6th place in CODE RUSH programming competition, showcasing strong coding skills and algorithmic thinking among top participants.",
+    image: "/images/coderush.jpg",
+    details: ["6th Place Winner", "Programming Contest", "Algorithmic Thinking", "Coding Excellence"]
   },
   {
     id: 3,
-    title: "Young Architect of the Year",
-    organization: "Sri Lanka Institute of Architects",
-    year: "2024",
-    type: "Professional",
-    description: "Honored as the Young Architect of the Year for exceptional contribution to sustainable and innovative architectural practice.",
-    image: "/images/achievement3.jpg",
-    details: ["Professional Recognition", "Industry Leadership", "Sustainable Practice", "Innovation Excellence"]
+    title: "Top 10 Finalists - SLIoT",
+    organization: "CS Engineering, UoM, SLT-Mobitel, IESL",
+    year: "2025",
+    type: "IoT Competition",
+    description: "Selected as top 10 finalist in Sri Lanka IoT Challenge, recognized for innovative IoT solutions and technical excellence in emerging technologies.",
+    image: "/images/sliot.jpg",
+    details: ["Top 10 Finalist", "IoT Innovation", "Technical Excellence", "Emerging Technologies"]
   },
   {
     id: 4,
-    title: "Research Publication Award",
-    organization: "International Journal of Architecture",
-    year: "2023",
-    type: "Research",
-    description: "Published research on sustainable urban planning strategies with focus on climate-responsive architectural solutions.",
-    image: "/images/achievement4.jpg",
-    details: ["Peer-reviewed Publication", "Urban Planning Research", "Climate Solutions", "Academic Recognition"]
+    title: "Top 20 Finalists - CodeX 2024",
+    organization: "CS Engineering, University of Moratuwa",
+    year: "2025",
+    type: "Competition",
+    description: "Reached top 20 finalists in CodeX 2024 competition, demonstrating strong programming fundamentals and competitive coding abilities.",
+    image: "/images/codex.jpg",
+    details: ["Top 20 Finalist", "Competitive Programming", "Technical Skills", "Programming Excellence"]
   },
   {
     id: 5,
-    title: "Community Service Excellence",
-    organization: "Habitat for Humanity",
-    year: "2024",
-    type: "Service",
-    description: "Outstanding volunteer contribution in designing affordable housing solutions for underprivileged communities in rural Sri Lanka.",
-    image: "/images/achievement5.jpg",
-    details: ["Community Impact", "Volunteer Leadership", "Affordable Housing", "Social Responsibility"]
+    title: "Top 10 Finalists - HackMoral 7.0",
+    organization: "INTECS, Faculty of IT, University of Moratuwa",
+    year: "2025",
+    type: "Hackathon",
+    description: "Achieved top 10 finalist position in HackMoral 7.0, showcasing innovative solutions and collaborative development skills in hackathon environment.",
+    image: "/images/hackmoral.jpg",
+    details: ["Top 10 Finalist", "Hackathon Excellence", "Innovation", "Collaborative Development"]
   }
 ];
 
@@ -86,22 +86,22 @@ export default function Achievements() {
         </div>
 
         {/* Achievements Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {ACHIEVEMENTS.map((achievement, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {ACHIEVEMENTS.map((achievement) => (
             <div 
               key={achievement.id}
               className={`rounded-2xl overflow-hidden shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105 ${
                 isDarkMode 
                   ? 'bg-gray-800 border border-gray-700' 
                   : 'bg-white border border-gray-200'
-              } ${index >= 3 ? 'lg:col-start-2' : ''}`}
+              }`}
             >
               {/* Achievement Header */}
-              <div className={`p-6 border-b ${
+              <div className={`p-6 border-b min-h-[150px] flex flex-col justify-between ${
                 isDarkMode ? 'border-gray-700' : 'border-gray-200'
               }`}>
                 <div className="flex items-start justify-between mb-3">
-                  <h3 className={`text-xl font-bold ${
+                  <h3 className={`text-xl font-bold leading-tight ${
                     isDarkMode ? 'text-white' : 'text-gray-900'
                   }`}>
                     {achievement.title}
@@ -115,7 +115,7 @@ export default function Achievements() {
                   </span>
                 </div>
                 
-                <div className="flex items-center gap-2 text-sm mb-2">
+                <div className="flex items-center gap-2 text-sm">
                   <span className={`${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                     {achievement.organization}
                   </span>
@@ -127,12 +127,22 @@ export default function Achievements() {
               </div>
 
               {/* Achievement Content */}
-              <div className="grid lg:grid-cols-2 gap-0">
-                {/* Image side */}
+              <div className="flex flex-col">
+                {/* Image section - full width */}
                 <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src={achievement.image} 
+                    alt={achievement.title}
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.nextSibling.style.display = 'flex';
+                    }}
+                  />
+                  {/* Fallback placeholder */}
                   <div className={`w-full h-full flex items-center justify-center ${
                     isDarkMode ? 'bg-gray-700' : 'bg-gray-100'
-                  }`}>
+                  }`} style={{ display: 'none' }}>
                     <div className="text-center p-6">
                       <div className={`w-12 h-12 mx-auto mb-3 rounded-full flex items-center justify-center ${
                         isDarkMode ? 'bg-gray-600' : 'bg-gray-200'
@@ -146,14 +156,14 @@ export default function Achievements() {
                       <p className={`text-xs ${
                         isDarkMode ? 'text-gray-400' : 'text-gray-500'
                       }`}>
-                        {achievement.image}
+                        Image not found
                       </p>
                     </div>
                   </div>
                 </div>
 
-                {/* Content side */}
-                <div className="p-6 flex flex-col justify-center">
+                {/* Content section - below image */}
+                <div className="p-6">
                   <div className="space-y-4">
                     <p className={`text-sm leading-relaxed ${
                       isDarkMode ? 'text-gray-300' : 'text-gray-600'

@@ -3,7 +3,7 @@ import Home from "./components/Home";
 import About from "./components/About";
 import Education from "./components/Education";
 import Projects from "./components/Projects";
-import ArchitecturalProjects from "./components/ArchitecturalProjects";
+import Achievements from "./components/Achievements";
 import Contact from "./components/Contact";
 import AnimatedBackground from "./components/AnimatedBackground";
 import FloatingElements from "./components/FloatingElements";
@@ -38,7 +38,7 @@ function AppContent() {
           <About />
           <Education />
           <Projects />
-          <ArchitecturalProjects />
+          <Achievements />
           <Contact />
         </main>
       </div>

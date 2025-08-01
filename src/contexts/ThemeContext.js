@@ -11,17 +11,17 @@ export const useTheme = () => {
 };
 
 export const ThemeProvider = ({ children }) => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true); // Default to dark mode
 
   useEffect(() => {
     // Check if user has a saved preference
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
+      // Respect user's previous choice
       setIsDarkMode(savedTheme === 'dark');
     } else {
-      // Check system preference
-      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setIsDarkMode(systemPrefersDark);
+      // For first-time visitors, default to dark mode
+      setIsDarkMode(true);
     }
   }, []);
 

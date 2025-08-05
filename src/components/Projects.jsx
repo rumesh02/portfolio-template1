@@ -235,7 +235,8 @@ export default function Projects() {
           {/* View More Button */}
           <div className="text-center mt-16">
             <a 
-              href="#"
+              href="https://github.com/rumesh02?tab=repositories"
+              target='_blank'
               className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl font-medium hover:from-blue-700 hover:to-indigo-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl group"
             >
               View All Projects

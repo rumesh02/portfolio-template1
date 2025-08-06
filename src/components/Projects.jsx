@@ -31,7 +31,7 @@ export default function Projects() {
       technologies: ["React", "Node.js", "Express.js", "MongoDB", "PayHere"],
       github: "#",
       demo: "#",
-      gradient: "from-green-500 to-emerald-600",
+      gradient: "from-blue-500 to-indigo-600",
       image: "🌾"
     },
     {
@@ -49,7 +49,7 @@ export default function Projects() {
       technologies: ["Laravel", "XAMPP", "MySQL", "HTML", "CSS", "JavaScript"],
       github: "#",
       demo: "#",
-      gradient: "from-teal-500 to-cyan-600",
+      gradient: "from-blue-500 to-indigo-600",
       image: "🏥"
     },
     {
@@ -58,7 +58,7 @@ export default function Projects() {
       technologies: ["React", "JavaScript", "CSS", "LocalStorage"],
       github: "#",
       demo: "#",
-      gradient: "from-purple-500 to-pink-600",
+      gradient: "from-blue-500 to-indigo-600",
       image: "📋"
     },
     {
@@ -67,7 +67,7 @@ export default function Projects() {
       technologies: ["React", "Tailwind CSS", "JavaScript", "CSS3"],
       github: "#",
       demo: "#",
-      gradient: "from-indigo-500 to-purple-600",
+      gradient: "from-blue-500 to-indigo-600",
       image: "💼"
     }
   ];

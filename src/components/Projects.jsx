@@ -26,58 +26,49 @@ export default function Projects() {
 
   const projects = [
     {
-      title: "E-Commerce Platform",
-      description: "A full-stack e-commerce application built with React, Node.js, and MongoDB. Features include user authentication, payment processing, and admin dashboard.",
-      technologies: ["React", "Node.js", "MongoDB", "Stripe"],
+      title: "Farm-to-Market (Harvest Bidding and Transport Management System)",
+      description: "A full-stack web platform enabling farmers to analyze harvest pricing and bid harvests for bidding, allowing merchants to place offers and arrange transport through registered transporters.",
+      technologies: ["React", "Node.js", "Express.js", "MongoDB", "PayHere"],
+      github: "#",
+      demo: "#",
+      gradient: "from-green-500 to-emerald-600",
+      image: "🌾"
+    },
+    {
+      title: "NovaNext (Automated Weighing and Packing System)",
+      description: "An automated system for weighing, dispensing, and packing goods using sensors and stepper motors, designed to streamline retail or agricultural product handling.",
+      technologies: ["Arduino", "NEMA 23", "Load Cell Sensor", "Servo Motors"],
       github: "#",
       demo: "#",
       gradient: "from-blue-500 to-indigo-600",
-      image: "🛒"
+      image: "⚖️"
     },
     {
-      title: "Task Management App",
-      description: "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
-      technologies: ["React", "Socket.io", "Express", "PostgreSQL"],
+      title: "Online Doctor Channeling System",
+      description: "A web-based doctor channeling system developed with Laravel, allowing patients to book appointments, view doctor schedules, and manage their medical visits efficiently.",
+      technologies: ["Laravel", "XAMPP", "MySQL", "HTML", "CSS", "JavaScript"],
       github: "#",
       demo: "#",
-      gradient: "from-green-500 to-teal-600",
+      gradient: "from-teal-500 to-cyan-600",
+      image: "🏥"
+    },
+    {
+      title: "Personal Task Manager Software",
+      description: "A simple React-based web application for managing daily tasks. Users can add, edit, delete, and mark tasks as complete. The app stores data locally, ensuring quick and easy task tracking.",
+      technologies: ["React", "JavaScript", "CSS", "LocalStorage"],
+      github: "#",
+      demo: "#",
+      gradient: "from-purple-500 to-pink-600",
       image: "📋"
     },
     {
-      title: "Weather Dashboard",
-      description: "A responsive weather application that provides current weather conditions and forecasts using external weather APIs.",
-      technologies: ["JavaScript", "OpenWeather API", "Chart.js", "CSS3"],
-      github: "#",
-      demo: "#",
-      gradient: "from-orange-500 to-red-600",
-      image: "🌤️"
-    },
-    {
       title: "Portfolio Website",
-      description: "A modern, responsive portfolio website with dark mode support, smooth animations, and optimized performance.",
-      technologies: ["React", "Tailwind CSS", "Framer Motion", "Netlify"],
+      description: "A modern, space-themed portfolio website featuring dark mode, smooth animations, interactive background effects, and responsive design. Built to showcase projects and achievements.",
+      technologies: ["React", "Tailwind CSS", "JavaScript", "CSS3"],
       github: "#",
       demo: "#",
-      gradient: "from-pink-500 to-violet-600",
+      gradient: "from-indigo-500 to-purple-600",
       image: "💼"
-    },
-    {
-      title: "Chat Application",
-      description: "Real-time chat application with private messaging, group chats, file sharing, and emoji support.",
-      technologies: ["React", "Socket.io", "Node.js", "Redis"],
-      github: "#",
-      demo: "#",
-      gradient: "from-indigo-500 to-blue-600",
-      image: "💬"
-    },
-    {
-      title: "Finance Tracker",
-      description: "Personal finance management app with expense tracking, budget planning, and financial analytics.",
-      technologies: ["React Native", "Node.js", "MongoDB", "Chart.js"],
-      github: "#",
-      demo: "#",
-      gradient: "from-emerald-500 to-cyan-600",
-      image: "💰"
     }
   ];
 
@@ -153,20 +144,22 @@ export default function Projects() {
                     : 'bg-white/90 border-gray-200/50 group-hover:shadow-blue-500/20'
                 }`}>
                   
-                  {/* Floating glow effect */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-indigo-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  {/* Floating glow effect - behind content */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-indigo-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
                   
-                  {/* 3D border effect */}
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-blue-400/20 via-transparent to-cyan-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm"></div>
+                  {/* 3D border effect - behind content */}
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-blue-400/20 via-transparent to-cyan-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm -z-10"></div>
 
-                  {/* Project Icon/Image with 3D effect */}
-                  <div className={`relative w-16 h-16 bg-gradient-to-br ${project.gradient} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg`}>
-                    <span className="text-2xl transform group-hover:scale-110 transition-transform duration-300">{project.image}</span>
-                    <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} rounded-2xl blur opacity-50 group-hover:opacity-80 transition-opacity duration-300`}></div>
+                  {/* Project Icon/Image with enhanced 3D effect and better visibility */}
+                  <div className={`relative z-20 w-16 h-16 bg-gradient-to-br ${project.gradient} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg ring-2 ring-white/20`}>
+                    <span className="relative z-30 text-3xl transform group-hover:scale-110 transition-transform duration-300 drop-shadow-lg filter brightness-125 contrast-125">{project.image}</span>
+                    <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} rounded-2xl blur opacity-60 group-hover:opacity-90 transition-opacity duration-300 -z-10`}></div>
+                    {/* Additional glow for better visibility */}
+                    <div className="absolute inset-0 bg-white/10 rounded-2xl group-hover:bg-white/20 transition-colors duration-300 -z-10"></div>
                   </div>
 
                   {/* Content */}
-                  <div className="space-y-4 relative z-10">
+                  <div className="space-y-4 relative z-20">
                     <h3 className={`text-xl font-bold transition-colors duration-300 ${
                       isDarkMode 
                         ? 'text-white group-hover:text-blue-300' 
@@ -199,7 +192,7 @@ export default function Projects() {
                   </div>
 
                   {/* Action Buttons with 3D effects */}
-                  <div className="flex gap-4 mt-8">
+                  <div className="flex gap-4 mt-8 relative z-20">
                     <a 
                       href={project.github}
                       className={`flex items-center gap-2 px-4 py-2 backdrop-blur-sm border rounded-xl font-medium transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 flex-1 justify-center shadow-lg hover:shadow-xl ${
@@ -224,9 +217,9 @@ export default function Projects() {
                     </a>
                   </div>
 
-                  {/* Enhanced Hover Effect with 3D depth */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-10 rounded-3xl transition-opacity duration-500`}></div>
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  {/* Enhanced Hover Effect with 3D depth - behind content */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-10 rounded-3xl transition-opacity duration-500 -z-10`}></div>
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
                 </div>
               </div>
             ))}

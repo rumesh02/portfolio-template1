@@ -35,10 +35,10 @@ export default function Education() {
                     }`}>B.Sc. (Hons) in Information Technology & Management</h3>
                     <p className={`mb-2 ${
                       isDarkMode ? 'text-gray-400' : 'text-gray-600'
-                    }`}>University of Moratuwa</p>
+                    }`}>University of Moratuwa.</p>
                     <p className={`mb-2 ${
                       isDarkMode ? 'text-gray-400' : 'text-gray-600'
-                    }`}>Avg GPA - 3.74</p>
+                    }`}>Avg GPA - 3.59</p>
                     <p className={`text-sm mb-3 ${
                       isDarkMode ? 'text-gray-500' : 'text-gray-500'
                     }`}>2023 - Present</p>
@@ -112,7 +112,7 @@ export default function Education() {
                     }`}>Advanced Level Education</h3>
                     <p className={`mb-2 ${
                       isDarkMode ? 'text-gray-400' : 'text-gray-600'
-                    }`}>S Thomas' College Mt Lavinia</p>
+                    }`}>S. Thomas' College, Mt Lavinia.</p>
                     <p className={`mb-2 ${
                       isDarkMode ? 'text-gray-400' : 'text-gray-600'
                     }`}>Physical Science Stream</p>
@@ -193,7 +193,7 @@ export default function Education() {
                     }`}>Ordinary Level Education</h3>
                     <p className={`mb-2 ${
                       isDarkMode ? 'text-gray-400' : 'text-gray-600'
-                    }`}>S Thomas' College Mt Lavinia</p>
+                    }`}>S. Thomas' College, Mt Lavinia.</p>
                     <p className={`mb-2 ${
                       isDarkMode ? 'text-gray-400' : 'text-gray-600'
                     }`}>Obtained 9 A Grades</p>
